@@ -1,0 +1,132 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin: 0 0 200px;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+}
+
+
+
+#jumbotron {
+  height: 800px;
+  background-image: url("/images/jumbotron-bg.jpg");;
+  background-size: cover;
+}
+
+#home-text {
+  margin-top: 200px;
+  color: #ffffff;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+.title {
+  font-weight: lighter;
+  margin-top: 50px;
+  margin-left: 82px;
+}
+
+.compose {
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-top: 30px;
+}
+
+.image-grid {
+  margin-top: 10px;
+}
+
+.page-container {
+  margin-top: 100px;
+}
+
+.page-content {
+  margin-left: 85px;
+  font-weight: lighter;
+  margin-top: 5px;
+  white-space: pre-line;
+}
+
+#post-content {
+  margin-top: -40px;
+  margin-left: -50px;
+}
+
+.navbar {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.navbar-hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.input:hover {
+  opacity: 0.8;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.resize {
+  width: 600px;
+  height: auto;
+}
+
+#postGrid {
+  margin-left: 70px;
+}
+
+#customFile {
+  margin-top: -30px;
+  width: 70%;
+}
+
+.date {
+  margin-left: 85px;
+
+}
+
+
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+}

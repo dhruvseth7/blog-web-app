@@ -1,0 +1,33 @@
+<%- include('partials/header'); -%>
+
+
+        <div id="postGrid" class="page-container">
+          <div class="row">
+              <div class="column">
+                  <img class="resize" src="/images/<%= post.image %>"></img>
+              </div>
+              <div id="post-content" class="column">
+
+                  <h1 class="title"><%= post.title %></h1>
+                  <small class="date"><%= post.postedDate %></small>
+                  <br>
+                  <br>
+                  <p class="page-content"><%= post.content %></p>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,25 @@
+<%- include('partials/header'); -%>
+
+<div class="page-container container">
+    <h1 class="title">Edit Post</h1>
+    <form id="newPost" class="compose" action="/update" method="POST">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="title" value="<%= title %>" required>
+        </div>
+        <div class="form-group">
+          <label>Entry</label>
+          <textarea class="form-control" rows="5" name="post" required><%= content %></textarea>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit" name="id" value="<%= id %>">Update</button>
+
+
+    </form>
+</div>
+
+
+
+
+<%- include('partials/footer') -%>

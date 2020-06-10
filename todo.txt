@@ -1,0 +1,16 @@
+1. Save new blog posts to MongoDB
+  - Create a schema and model for blogposts
+
+2. Render blog posts on home page, collected from mongo
+
+3. Make front end nicer
+  - Add image selector for each blog post
+  - Display image with preview on home page
+
+4. Provide link to different posts through read more link
+
+5. Delete blog posts
+
+6. Update blog posts
+
+7. Figure out image uploads

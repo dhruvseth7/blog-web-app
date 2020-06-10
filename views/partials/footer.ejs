@@ -1,0 +1,48 @@
+<footer>
+  <small class="footer">Copyright &copy Dhruv Seth. Developed by Dhruv Seth</small>
+
+</footer>
+
+<script>
+      $(window).scroll(function(e) {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 100) {
+                $('.navbar').addClass("navbar-hide");
+            } else {
+                $('.navbar').removeClass("navbar-hide");
+            }
+      });
+</script>
+
+<script>
+    let inputs = document.querySelectorAll(".input");
+    inputs.forEach(function(input) {
+      input.addEventListener("click", function(event) {
+          let element = event.target;
+          let image = element.id;
+          document.querySelector("#selectedImage").value = image;
+
+          if (element.style.border === "") {
+            element.style.border = "solid";
+            element.style.borderColor = "#4775d1";
+            element.style.borderWidth = "1.5pt";
+
+            inputs.forEach(function(sibling) {
+              if (sibling != input) {
+                sibling.style.border = "";
+              }
+            })
+          } else {
+            document.querySelector("#selectedImage").value = "";
+            element.style.border = "";
+          }
+      })
+    })
+
+
+
+</script>
+
+
+</body>
+</html>
