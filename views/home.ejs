@@ -6,18 +6,24 @@
 
   <div id="jumbotron" class="jumbotron jumbotron-fluid">
       <div id="home-text" class="container">
-        <h1 class="display-3">Welcome</h1>
+        <h1 class="display-1">Welcome</h1>
         <p class="lead"><%= home %></p>
       </div>
   </div>
 
 
     <div class="container">
+      <h1 class="title main-title">All Entries</h1>
       <div class="row">
         <% blogPosts.forEach(function(post) { %>
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-              <img src="images/<%= post.image %>" class="bd-placeholder-img card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"></img>
+              <% if (post.image != null) { %>
+                  <img src="images/<%= post.image %>" class="bd-placeholder-img card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"></img>
+              <% } else { %>
+                <img src="data:image/<%=post.imageFile.contentType%>;base64, <%=post.imageFile.data.toString('base64')%>" class="bd-placeholder-img card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" >
+              <% } %>
+
               <div class="card-body">
                 <p class="card-text"><%= post.title %>
                     <br>

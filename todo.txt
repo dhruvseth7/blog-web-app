@@ -13,4 +13,4 @@
 
 6. Update blog posts
 
-7. Figure out image uploads
+7. Figure out image uploads (Read up on multer)

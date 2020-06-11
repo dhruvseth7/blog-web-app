@@ -3,7 +3,7 @@
 
 <div class="page-container container">
     <h1 class="title">Compose</h1>
-    <form id="newPost" class="compose" action="/compose" method="POST">
+    <form id="newPost" class="compose" action="/compose" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label>Title</label>
           <input type="text" class="form-control" name="title" required>
@@ -58,7 +58,7 @@
         <div id="customFile" class="form-group">
           <label>Or, select your own</label>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage">
+            <input type="file" class="custom-file-input" id="uploadedImage" name="uploadedImage" value="">
             <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
           </div>
         </div>

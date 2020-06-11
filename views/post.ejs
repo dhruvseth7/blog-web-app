@@ -3,10 +3,14 @@
 
         <div id="postGrid" class="page-container">
           <div class="row">
-              <div class="column">
-                  <img class="resize" src="/images/<%= post.image %>"></img>
+              <div class="column" style="width: 50%">
+                  <% if (post.image != null) { %>
+                    <img class="resize" src="/images/<%= post.image %>"></img>
+                  <% } else { %>
+                    <img src="data:image/<%=post.imageFile.contentType%>;base64, <%=post.imageFile.data.toString('base64')%>" class="resize">
+                  <% } %>
               </div>
-              <div id="post-content" class="column">
+              <div id="post-content" class="column" style="width: 50%">
 
                   <h1 class="title"><%= post.title %></h1>
                   <small class="date"><%= post.postedDate %></small>

@@ -21,15 +21,7 @@ const homeStartingContent = "Welcome to the home page. View your recent activity
 const aboutContent = "This is a Node and Express application to help you get started with building a blog of your own";
 const contactContent = "I can be reached at dhruvseth7@berkeley.edu if you have any questions";
 
-let storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-
+let storage = multer.memoryStorage();
 let upload = multer({storage: storage});
 
 
@@ -54,7 +46,7 @@ app.get("/compose", (req, res) => {
     res.render("compose");
 })
 
-app.post("/compose", upload.single('uploadedImage'), (req, res) => {
+app.post("/compose", upload.single("uploadedImage"), (req, res) => {
     const title = req.body.title;
     const content = req.body.post;
     let image = req.body.image;
@@ -63,8 +55,9 @@ app.post("/compose", upload.single('uploadedImage'), (req, res) => {
       image = "gridimage-" + utilities.getRandomInt(6).toString() + ".jpeg";
     }
 
+
     var newPost;
-    if (req.body.imageFileName == '') {
+    if (!req.file) {
          newPost = new BlogPost({
             title: title,
             content: content,
@@ -76,12 +69,11 @@ app.post("/compose", upload.single('uploadedImage'), (req, res) => {
            title: title,
            content: content,
            postedDate: utilities.getDate(),
-           image: image
+           imageFile: {
+             data: req.file.buffer,
+             contentType: 'image/png'
+           }
        })
-       /* imageFile: {
-         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.imageFileName)),
-         contentType: 'image/png'
-       } */
     }
 
     newPost.save().then(() => res.redirect("/"));
