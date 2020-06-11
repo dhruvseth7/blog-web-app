@@ -4,12 +4,12 @@
 </footer>
 
 <script>
-      document.querySelector('window').scroll(function(e) {
-            var scroll = document.querySelector('window').scrollTop();
+      $(window).scroll(function(e) {
+            var scroll = $(window).scrollTop();
             if (scroll >= 100) {
-                document.querySelector('.navbar').addClass("navbar-hide");
+                $('.navbar').addClass("navbar-hide");
             } else {
-                document.querySelector('.navbar').removeClass("navbar-hide");
+                $('.navbar').removeClass("navbar-hide");
             }
       });
 </script>
