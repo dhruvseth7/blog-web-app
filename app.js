@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/blogAppDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
+mongoose.connect("mongodb+srv://dhruvseth7:test123@cluster0-oxy6c.mongodb.net/blogAppDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const homeStartingContent = "Welcome to the home page. View your recent activity below.";
 const aboutContent = "This is a Node and Express application to help you get started with building a blog of your own";
@@ -23,7 +23,6 @@ const contactContent = "I can be reached at dhruvseth7@berkeley.edu if you have 
 
 let storage = multer.memoryStorage();
 let upload = multer({storage: storage});
-
 
 app.get("/", (req, res) => {
     BlogPost.find((err, posts) => {
