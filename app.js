@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 const ejs = require('ejs');
-const _ = require('lodash');
+const multer = require('multer');
 const utilities = require(__dirname + "/utilities.js");
 const BlogPost = require(__dirname + "/models/blog.js");
+
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -17,6 +20,17 @@ mongoose.connect("mongodb://localhost:27017/blogAppDB", {useNewUrlParser: true, 
 const homeStartingContent = "Welcome to the home page. View your recent activity below.";
 const aboutContent = "This is a Node and Express application to help you get started with building a blog of your own";
 const contactContent = "I can be reached at dhruvseth7@berkeley.edu if you have any questions";
+
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+let upload = multer({storage: storage});
 
 
 app.get("/", (req, res) => {
@@ -40,20 +54,35 @@ app.get("/compose", (req, res) => {
     res.render("compose");
 })
 
-app.post("/compose", (req, res) => {
+app.post("/compose", upload.single('uploadedImage'), (req, res) => {
     const title = req.body.title;
     const content = req.body.post;
     let image = req.body.image;
+
     if (!image || image === "") {
       image = "gridimage-" + utilities.getRandomInt(6).toString() + ".jpeg";
     }
 
-    const newPost = new BlogPost({
-        title: title,
-        content: content,
-        postedDate: utilities.getDate(),
-        image: image
-    })
+    var newPost;
+    if (req.body.imageFileName == '') {
+         newPost = new BlogPost({
+            title: title,
+            content: content,
+            postedDate: utilities.getDate(),
+            image: image
+        })
+    } else {
+        newPost = new BlogPost({
+           title: title,
+           content: content,
+           postedDate: utilities.getDate(),
+           image: image
+       })
+       /* imageFile: {
+         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.imageFileName)),
+         contentType: 'image/png'
+       } */
+    }
 
     newPost.save().then(() => res.redirect("/"));
 })
@@ -92,11 +121,11 @@ app.post("/update", (req, res) => {
         title: updatedTitle,
         content: updatedContent,
         postedDate: utilities.getDate()
-      }).then(() => res.redirect("/"));
+    }).then(() => res.redirect("/"));
 })
 
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Listening at port ${port}`);
+    console.log(`Listening on port ${port}`);
 })

@@ -10,7 +10,11 @@ const blogPostSchema = new mongoose.Schema({
       required: true
     },
     postedDate: String,
-    image: String
+    image: String,
+    imageFile: {
+      data: Buffer,
+      contentType: String
+    }
 })
 
 const BlogPost = mongoose.model("BlogPost", blogPostSchema);
