@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://dhruvseth7:test123@cluster0-oxy6c.mongodb.net/blogAppDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("Connection URL", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const homeStartingContent = "Welcome to the home page. View your recent activity below.";
 const aboutContent = "This is a Node and Express application to help you get started with building a blog of your own";
